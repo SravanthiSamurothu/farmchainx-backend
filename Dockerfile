@@ -5,8 +5,11 @@ WORKDIR /app
 COPY . .
 
 RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
+
+# 👇 THIS CREATES JAR
+RUN ./mvnw clean package
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/*.jar"]
+# 👇 RUN ACTUAL JAR NAME (NOT *)
+CMD ["java", "-jar", "target/farmchainx-backend-1.0.0.jar"]
